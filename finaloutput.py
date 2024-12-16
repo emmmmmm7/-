@@ -15,7 +15,7 @@ def dms_to_decimal(dms_str):
     return None
 
 # 加载 Excel 文件
-file_path = '/Users/rrw/Documents/postgraduate/帮帮/QH/2024.12 四川出野/奥维地图导入/采样点/outputdata.xlsx'  # 更新为你的文件路径
+file_path = 'yourfile.xlsx'  # 更新为你的文件路径
 df = pd.read_excel(file_path, header=None, engine='openpyxl')  # 读取文件，无表头
 
 # 初始化变量
@@ -49,7 +49,7 @@ df[2] = df[2].apply(dms_to_decimal)  # 第三列转换为十进制度
 # 删除 Longitude 列中为空值的行
 df_cleaned = df[df.iloc[:, 1].notna()]
 # 保存结果到新文件
-output_path = './采样点/processed_file.csv'
+output_path = 'yourfile.csv'
 df_cleaned.to_csv(output_path, index=False, header=False)
 print(f"处理后的数据已保存到 {output_path}")
 
@@ -158,7 +158,7 @@ for idx, line in enumerate(data.strip().split("\n")):
 base_template["ObjItems"][0]["Object"]["ObjectDetail"]["ObjChildren"] = obj_children
 
 # 输出到 .ovjson 文件
-output_file_path = "./采样点/output.ovjsn"
+output_file_path = "yourfile.ovjsn"
 with open(output_file_path, "w", encoding="utf-8") as file:
     json.dump(base_template, file, indent=4, ensure_ascii=False)
 
